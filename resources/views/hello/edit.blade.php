@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <form action="/hello/add" method="post">
+    <form action="/hello/edit" method="post">
         <table>
             @csrf
             <input type="hidden" name="id" value="{{$form->id}}">
