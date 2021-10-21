@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Person;
 
 class Board extends Model
 {
@@ -12,12 +13,17 @@ class Board extends Model
     public static $rules = array(
         'person_id' => 'required',
         'title' => 'required',
-        'messade' => 'required'
+        'message' => 'required'
     );
 
     public function getData()
     {
-        return $this->id . ': ' . $this->title;
+        return $this->id . ': ' . $this->title . ' (' . $this->person->name . ')';
+    }
+
+    public function person()
+    {
+        return $this->belongsTo('App\Models\Person');
     }
 }
 
