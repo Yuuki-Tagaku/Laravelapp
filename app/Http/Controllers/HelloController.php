@@ -61,14 +61,14 @@ class HelloController extends Controller
     public function del(Request $request)
     {
         $item = DB::table('people')
-        ->where('id', $request->id)->first();
+            ->where('id', $request->id)->first();
         return view('hello.del', ['form' => $item]);
     }
 
     public function remove(Request $request)
     {
         DB::table('people')
-        ->where('id', $request->id)->delete();
+            ->where('id', $request->id)->delete();
         return redirect('/hello');
     }
 
@@ -80,5 +80,10 @@ class HelloController extends Controller
             ->limit(3)
             ->get();
         return view('hello.show', ['items' => $items]);
+    }
+
+    public function rest(Request $request)
+    {
+        return view('hello.rest');
     }
 }
